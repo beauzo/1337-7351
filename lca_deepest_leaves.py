@@ -1,31 +1,5 @@
 from typing import Optional
-import tree_node
-
-
-def array_to_binary_tree(array: list) -> TreeNode:
-    def get_node(index):
-        if index >= len(array) or array[index] is None:
-            return None
-
-        node = TreeNode(
-            val=array[index],
-            left=get_node((index + 1) * 2 - 1),
-            right=get_node((index + 1) * 2)
-        )
-
-        return node
-
-    return get_node(0)
-
-
-def print_tree(root: Optional[TreeNode], depth=0):
-    if root is None:
-        return
-
-    print('  ' * depth + str(root.val))
-
-    print_tree(root.left, depth + 1)
-    print_tree(root.right, depth + 1)
+from tree_node import TreeNode, array_to_binary_tree, print_tree
 
 
 class Solution(object):
@@ -114,16 +88,16 @@ if __name__ == '__main__':
         array_to_binary_tree([0, 1, None, 3, None, None, None, 7, 8])
     ]
 
-    for t in tests:
+    for test in tests:
         print('--------- input')
 
-        print_tree(t)
+        print_tree(test)
 
         print('--------- output')
 
         solution = Solution()
-        print_tree(solution.lca_deepest_leaves(t))
+        print_tree(solution.lca_deepest_leaves(test))
         solution2 = Solution2()
-        print_tree(solution2.lca_deepest_leaves(t))
+        print_tree(solution2.lca_deepest_leaves(test))
         solution3 = Solution3()
-        print_tree(solution3.lca_deepest_leaves(t))
+        print_tree(solution3.lca_deepest_leaves(test))
