@@ -1,0 +1,5 @@
+cvxpy
+matplotlib
+pandas
+plotly
+seaborn
